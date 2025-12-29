@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkımızda</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .BAŞLIK {
+            display: flex;
+            margin:auto;
+            margin-top: 70px;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            width: 900px;
+            border-radius: 8px;
+            border: 3px solid black;
+            font-size: 100px;
+            font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;  
+            background-image: url(img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif);
+            background-size: cover;
+            color: black;
+        }
+
+        p {
+            margin:auto;
+            margin-top: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 700px;
+            background-image: url("img/e1cd3d127ae8707b350f0157406db11d.jpg");
+            border-radius: 8px;
+            border: 3px solid black;
+            font-size: 30px;
+            font-family: sans-serif;
+            font-style: italic;
+            padding: 100px;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            padding: 12px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1002;
+            color: white;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 12px gold;
+        }
+
+        #sidebar {
+            height: 100vh;
+            width: 260px;
+            position: fixed;
+            top: 0;
+            left: -260px;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(6px);
+            color: white;
+            padding-top: 70px;
+            transition: 0.4s ease;
+            z-index: 1001;
+            box-shadow: 5px 0 20px rgba(255, 215, 0, 0.22);
+            font-family: 'Trebuchet MS', sans-serif;
+            
+        }
+
+        #sidebar.open { left: 0; }
+
+        #sidebar a {
+            display: block;
+            padding: 18px 25px;
+            font-size: 19px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.35s;
+        }
+
+        #sidebar a:hover {
+            background: rgba(255, 215, 0, 0.22);
+            padding-left: 40px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        #overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body style="
+    background-image: url('img/licensed-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    margin: 0;
+">
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div id="sidebar">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="6-Kayıt Formu.html">Sipariş</a>
+        <a href="3-Hakkında.html">Hakkımızda</a>
+        <a href="4-Ürünler.html">Ürünler</a>
+        <a href="5-İletişim.html">İletişim</a>
+        <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
+    </div>
+
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <h1 class="BAŞLIK">Hakkımızda</h1>
+
+    <p>
+Fırat Gold, değerli madenlerin sadece bir yatırım aracı değil; güven, emek ve ustalıkla birleşmiş bir miras olduğuna inanır. Kurulduğumuz günden bu yana hedefimiz, müşterilerimize hem şık hem de uzun ömürlü ürünler sunmak, bunu yaparken de şeffaflık ve güvenilirliğimizi hiçbir zaman kaybetmemektir.
+<br><br>
+Mağazamızda yer alan her ürün; kalite standartlarına uygun, titizlikle seçilmiş ve gerçek değerini taşıyan altın, pırlanta ve özel tasarım mücevherlerden oluşur. Alışveriş yapan herkesin kendini güvende hissetmesi için tüm süreçleri açık bir şekilde yürütür, ürünlerimizin değerini belgelerle destekleriz.
+<br><br>
+Fırat Gold olarak, sadece satış yapan bir marka değil; müşterisinin her aşamada yanında duran bir rehber olmayı amaçlıyoruz. Hangi ürünün sizin için daha doğru olduğunu dürüstçe anlatır, uzun vadede pişman olmayacağınız seçimler yapmanıza yardımcı oluruz.
+<br><br>
+Güvenilirlik, kalite ve müşteri memnuniyeti… Bizim için bunlar süslü söz değil, işimizin temelidir.
+<br><br><br>
+Fırat Gold’a hoş geldiniz. Değeriniz burada gerçek karşılığını bulur.
+</p>
+
+
+<script>
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("open");
+        document.getElementById("overlay").classList.toggle("show");
+    }
+</script>
+
+</body>
+</html>

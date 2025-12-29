@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hata Düzeltilmiş Dinamik İçerik</title>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #6dd5ed, #2193b0);
+            color: #fff;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2193b0;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+
+        .meme-card {
+            position: relative;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3; /* En boy oranını koru */
+            background-color: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #memeImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.5s;
+        }
+
+        #memeCaption {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-transform: uppercase;
+            border-radius: 5px;
+            max-width: 90%;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2193b0;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Dinamik İçerik Üreticisi</h1>
+        
+        <div class="meme-card">
+            <img id="memeImage" src="" alt="Dinamik Resim Yükleniyor">
+            <div id="memeCaption">Yeni İçerik Oluştur!</div>
+            <div class="loader" id="loader"></div>
+        </div>
+
+        <button onclick="generateMeme()">YENİ İÇERİK OLUŞTUR</button>
+    </div>
+
+    <script>
+        const memeImage = document.getElementById('memeImage');
+        const memeCaption = document.getElementById('memeCaption');
+        const loader = document.getElementById('loader');
+        const generateButton = document.querySelector('button');
+
+        // Yerel Olarak Kullanılacak Rastgele Resim URL'leri
+        // Bu URL'ler (PlaceKitten, Picsum) API anahtarı gerektirmez ve rastgele resim döndürür.
+        const imageSources = [
+            'https://picsum.photos/600/450?random=1', // Farklı boyut ve rastgelelik için
+            'https://placekitten.com/600/450',
+            'https://picsum.photos/600/450?random=2',
+            'https://placebear.com/600/450',
+            'https://picsum.photos/600/450?random=3'
+        ];
+        
+        // Yerel Olarak Kullanılacak Rastgele Metinler
+        const captions = [
+            "İŞTE O ANI YAŞIYORUZ",
+            "Bu, bir simülasyon mu?",
+            "Plan işe yaradı!",
+            "Gerçek hayat vs. Beklenen",
+            "Mükemmel kodun sırrı",
+            "DAHA İYİSİ BUDUR",
+            "Frontend Büyüsü"
+        ];
+
+        // Durum Yönetimi
+        function setAppState(isLoading) {
+            generateButton.disabled = isLoading;
+            loader.style.display = isLoading ? 'block' : 'none';
+            memeImage.style.opacity = isLoading ? '0.2' : '1';
+        }
+
+        // Rastgele Metin Seçme
+        function getRandomCaption() {
+            const randomIndex = Math.floor(Math.random() * captions.length);
+            return captions[randomIndex];
+        }
+
+        // Rastgele Resim URL'si Seçme
+        function getRandomImageUrl() {
+            const randomIndex = Math.floor(Math.random() * imageSources.length);
+            // URL'ye benzersiz bir zaman damgası ekleyerek tarayıcı önbelleğini atla
+            return `${imageSources[randomIndex]}&t=${Date.now()}`;
+        }
+
+        // Ana İşlev: İçerik Oluştur
+        function generateMeme() {
+            setAppState(true); // Yükleme başladı
+            memeCaption.textContent = "YÜKLENİYOR...";
+
+            const newImageUrl = getRandomImageUrl();
+            const newCaption = getRandomCaption();
+
+            // Resim yüklenene kadar beklemek için Promise veya zamanlayıcı kullanalım
+            // Bu, API'den veri çekme süresini simüle eder.
+            setTimeout(() => {
+                // DOM'u Güncelleme
+                memeImage.src = newImageUrl;
+                
+                // Resim yüklendikten sonra başlığı göster
+                memeImage.onload = () => {
+                    memeCaption.textContent = newCaption;
+                    setAppState(false); // Yükleme bitti
+                };
+                
+                // Eğer resim yüklenirken hata olursa (örneğin PlaceBear bazen hata verebilir)
+                memeImage.onerror = () => {
+                    memeCaption.textContent = "Görüntü Yüklenemedi, tekrar dene.";
+                    // Hatanın hızlıca görülmesi için yüklemeyi bitir
+                    setAppState(false); 
+                };
+            }, 500); // 0.5 saniye yapay gecikme ekledik.
+        }
+        
+        // Başlangıçta Uygulama Yüklendiğinde
+        window.onload = function() {
+            // İlk resmi ve metni göster
+            memeImage.src = 'https://picsum.photos/600/450?random=99';
+            memeCaption.textContent = "Başlamak İçin Tıkla!";
+        };
+    </script>
+</body>
+</html>

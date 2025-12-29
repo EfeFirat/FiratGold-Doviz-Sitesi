@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sipariş Aşamalarımız</title>
+    <link rel="stylesheet" href="img/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico">
+    <style>
+        .BAŞLIK {
+            display: flex;
+            margin:auto;
+            margin-top: 10px;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            width: 900px;
+            border-radius: 8px;
+            border: 3px solid black;
+            font-size: 100px;
+            font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;  
+            background-image: url(img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif);
+            background-size: cover;
+            color: black;
+        }
+        .menu-btn {
+            font-size: 30px;
+            padding: 12px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1002;
+            color: white;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 10px;
+            transition: 0.3s ease;
+            transform-origin: center;
+            display: inline-block;
+            position: relative;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 12px gold;
+        }
+
+        #sidebar {
+            height: 100vh;
+            width: 260px;
+            position: fixed;
+            top: 0;
+            left: -260px;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(6px);
+            color: white;
+            padding-top: 70px;
+            transition: 0.4s ease;
+            z-index: 1001;
+            box-shadow: 5px 0 20px rgba(255, 215, 0, 0.22);
+        }
+
+        #sidebar.open { left: 0; }
+
+        #sidebar a {
+            display: block;
+            padding: 18px;
+            padding-left: 25px;
+            font-size: 19px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.35s;
+        }
+
+        #sidebar a:hover {
+            background: rgba(255, 215, 0, 0.22);
+            padding-left: 40px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        #overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        
+        body {
+            background-image: url(img/licensed-image.jpg);
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 20px;
+        }
+
+        .cerceve {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 60px; 
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+        
+        h1 { margin-bottom: 5px; }
+        h2 { 
+            font-size: 18px; 
+            color: #ccc; 
+            margin-top: 0; 
+            font-weight: normal; 
+        }
+
+        .adimlar {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .kutu {
+            background-color: #2d1b4e;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            border: 1px solid #444;
+        }
+
+        .kutu img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .buyuk-resim {
+            width: 100%;
+            background-color: #2d1b4e;
+            border-radius: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .buyuk-resim img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .aciklama-yazisi {
+            background-color: #2d1b4e;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .bilgi-kutulari {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .bilgi-kart {
+            background-color: #2d1b4e;
+            border: 1px solid #e67e22;
+            border-radius: 10px;
+            padding: 15px;
+            width: 45%;
+            flex-grow: 1;
+        }
+
+        .bilgi-kart h3 {
+            color: #ffccbc;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+
+        .bilgi-kart ul { padding-left: 20px; }
+
+        .akis-kutulari { margin-bottom: 30px; }
+
+        .mor-kutu {
+            background-color: #4a148c;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #e67e22;
+        }
+
+        .mor-kutu h4 { margin: 0; color: #fff; }
+        .mor-kutu p { margin: 5px 0 0 0; font-size: 13px; color: #ddd; }
+
+        .alt-kisim {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            text-align: center;
+            margin-top: 40px;
+            border-top: 1px solid #444;
+            padding-top: 20px;
+        }
+
+        .alt-kutu { width: 200px; margin-bottom: 20px; }
+
+        .ikon-yuvarlak {
+            font-size: 24px;
+            border: 2px solid #e67e22;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            margin: 0 auto 10px auto;
+            color: #e67e22;
+        }
+
+        @media (max-width: 600px) {
+            .adimlar, .bilgi-kutulari, .alt-kisim { flex-direction: column; }
+            .bilgi-kart, .alt-kutu { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <div id="sidebar">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="6-Kayıt Formu.html">Sipariş</a>
+        <a href="3-Hakkında.html">Hakkımızda</a>
+        <a href="4-Ürünler.html">Ürünlerimiz</a>
+        <a href="5-İletişim.html">İletişim</a>
+        <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
+    </div>
+    <h1 class="BAŞLIK">FıratGold</h1>
+    <div class="cerceve">
+        <h1>AKILLI SİSTEM TASARIMI</h1>
+        <h2>FıratGold Sitemiz İçin Entegre Bilişim Sistemi</h2>
+        <hr style="border-color: #444;">
+
+        <div class="adimlar">
+            <div class="kutu">
+             <img src="img/6wxRsbESnuX7z29Sl9eg4.jpg" alt="Giriş">
+                <div>Siteye Giriş</div>
+            </div>
+            <div class="kutu">
+                <img src="img/TG-Wy9rD4ORZ8wd8KIMOV.jpg" alt="Arama">
+                <div>Ürün Arama</div>
+            </div>
+            <div class="kutu">
+                <img src="img/JWhnU4-14FfTIeCLw6vzv.jpg" alt="Sepet">
+                <div>Sepete Ekle</div>
+            </div>
+            <div class="kutu">
+                <img src="img/JTL0zjyV7YAHTJm5GDPPD.jpg" alt="Ödeme">
+                <div>Ödeme Yap</div>
+            </div>
+        </div>
+
+        <div class="buyuk-resim">
+            <img src="img/EBKSUesCk7itFN14hpFwX.jpg" alt="Kargo ve Teslimat Aracı">
+            <p style="color:black; font-weight:bold;">Sipariş Tamamlandı - Teslimat Süreci</p>
+        </div>
+
+        <div class="aciklama-yazisi">
+            <p><strong>Bu Kısmın Amacı:</strong> Müşterilerimizin Sipariş Verirken Güven içinde Hissetmesi ve Memnuniyeti.</p>
+            <p>Bu çalışma, FıratGold firmasının sistem tasarımını gösterir. Verimlilik ve hatayı azaltmak amaçlanmıştır.</p>
+            <p>💻 Bilişim Sistemleri | 📂 Sınıflandırma | 🔌 Donanım</p>
+        </div>
+
+        <div class="bilgi-kutulari">
+            <div class="bilgi-kart">
+                <h3>4. Yazılım Türleri</h3>
+                <ul>
+                    <li>Sistem Yazılımları</li>
+                    <li>Mobil Uygulamalar</li>
+                </ul>
+            </div>
+            <div class="bilgi-kart">
+                <h3>5. Veritabanı Yönetimi</h3>
+                <ul>
+                    <li>Müşteri Verileri</li>
+                    <li>Stok Takibi</li>
+                </ul>
+            </div>
+            <div class="bilgi-kart">
+                <h3>6. Bilgisayar Ağları</h3>
+                <ul>
+                    <li>Güvenli İnternet</li>
+                    <li>Bulut Sistemler</li>
+                </ul>
+            </div>
+            <div class="bilgi-kart">
+                <h3>7. Web Teknolojileri</h3>
+                <ul>
+                    <li>Web Arayüzü</li>
+                    <li>API Entegrasyonu</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="akis-kutulari">
+            <div class="mor-kutu">
+                <h4>🖥️ Kullanıcı Arayüzü</h4>
+                <p>Web ve Mobil Uygulamalar</p>
+            </div>
+            <div class="mor-kutu">
+                <h4>🛒 Modüllerimiz</h4>
+                <p>Ürün Kataloğu, Sepet İşlemleri</p>
+            </div>
+            <div class="mor-kutu">
+                <h4>💳 Ödeme ve Kargo</h4>
+                <p>Entegrasyon Yönetimi</p>
+            </div>
+            <div class="mor-kutu">
+                <h4>💾 Veritabanı Yönetimi</h4>
+                <p>Ürün ve Stok Kayıtları</p>
+            </div>
+        </div>
+
+        <div class="alt-kisim">
+            <div class="alt-kutu">
+                <div class="ikon-yuvarlak">⚙️</div>
+                <h4>ERP Sistemleri</h4>
+                <p style="font-size:12px; color:#aaa;">Stok ve muhasebe</p>
+            </div>
+            <div class="alt-kutu">
+                <div class="ikon-yuvarlak">👥</div>
+                <h4>CRM Sistemleri</h4>
+                <p style="font-size:12px; color:#aaa;">Müşteri ilişkileri</p>
+            </div>
+            <div class="alt-kutu">
+                <div class="ikon-yuvarlak">🔒</div>
+                <h4>Bilgi Güvenliği</h4>
+                <p style="font-size:12px; color:#aaa;">SSL ve yedekleme</p>
+            </div>
+            <div class="alt-kutu">
+                <div class="ikon-yuvarlak">⚖️</div>
+                <h4>Bilişim Etiği</h4>
+                <p style="font-size:12px; color:#aaa;">KVKK ve gizlilik</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

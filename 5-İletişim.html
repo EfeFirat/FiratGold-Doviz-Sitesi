@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico">
+<style>
+    body {
+        background-image: url('img/licensed-image.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0;
+        font-family: 'Trebuchet MS', sans-serif;
+        min-height: 100vh;
+    }
+
+    .menu-btn {
+        font-size: 30px;
+        padding: 10px;
+        cursor: pointer;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1100;
+        color: white;
+        transition: 0.3s;
+        border-radius: 10px;
+    }
+    .menu-btn:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 12px gold;
+    }
+
+    #sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background: rgba(0,0,0,0.85);
+        backdrop-filter: blur(6px);
+        color: white;
+        padding-top: 70px;
+        transition: left 0.3s ease;
+        z-index: 1050;
+        box-shadow: 3px 0 20px rgba(255, 215, 0, 0.25);
+        font-family: 'Trebuchet MS', sans-serif;
+        font-size: 30px;
+    }
+    #sidebar.open { left: 0; }
+
+    #sidebar a {
+        display: block;
+        padding: 15px 25px;
+        font-size: 19px;
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.15);
+        transition: 0.3s;
+        letter-spacing: 1px;
+    }
+    #sidebar a:hover {
+        background: rgba(255,215,0,0.2);
+        padding-left: 40px;
+    }
+
+    #overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.55);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        z-index: 1040;
+    }
+    #overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .satir {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 100px;
+    }
+
+    .yazi, .nokta, .numara {
+        margin: 20px;
+        background-color: white;
+        height: 80px;
+        border-radius: 8px;
+        border: 3px solid black;
+        background-image: url(img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif);
+        font-size: 30px;
+        font-family: sans-serif;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+    .yazi { width: 300px; }
+    .nokta { width: 30px; transition: 0.3s; }
+    .numara { width: 300px; text-decoration: none; color: black; }
+    .numara:hover {
+        background-color: rgba(255,255,255,0.8);
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
+    .şart {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: aliceblue;
+        border-radius: 8px;
+        padding: 100px;
+        margin: auto;
+        border: 4px solid black;
+        width: 400px;
+        gap: 50px;
+        font-size: 20px;
+        background-image: url(img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="menu-btn" onclick="toggleSidebar()">☰</div>
+<div id="overlay" onclick="toggleSidebar()"></div>
+
+<div id="sidebar">
+    <a href="index.html">Ana Sayfa</a>
+    <a href="6-Kayıt Formu.html">Sipariş</a>
+    <a href="3-Hakkında.html">Hakkımızda</a>
+    <a href="4-Ürünler.html">Ürünlerimiz</a>
+    <a href="5-İletişim.html">İletişim</a>
+    <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
+</div>
+
+<div class="satir">
+    <p class="yazi">İletişim Numarası 📞</p>
+    <p class="nokta">:</p>
+    <a class="numara" href="tel:+905388863876">+90 538 886 38 76</a>
+</div>
+
+<ul class="şart">
+    <li>Uzaktan Alım-Satım İşlemlerimizden Yalnızca İstanbul Sınırları İçerisinde İkamet Eden Müşterilerimiz Yararlanabilecektir.</li>
+    <li>Uzaktan Alım-Satım İşlemlerimizden Yararlanabilmek İçin Minimum 30.000TL Üzerinde Alım-Satım Yapmanız Gerekmektedir.</li>
+</ul>
+
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünlerimiz</title>
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" href="favicon.ico">
+    <style>
+
+        .menu-btn {
+            font-size: 30px;
+            padding: 12px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1002;
+            color: white;
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 10px;
+            transition: 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 12px gold;
+        }
+
+        #sidebar {
+            height: 100vh;
+            width: 260px;
+            position: fixed;
+            top: 0;
+            left: -260px;
+            background: rgba(0, 0, 0, 0.78);
+            backdrop-filter: blur(6px);
+            color: white;
+            padding-top: 70px;
+            transition: 0.4s ease;
+            z-index: 1001;
+            box-shadow: 5px 0 20px rgba(255, 215, 0, 0.22);
+        }
+
+        #sidebar.open {
+            left: 0;
+        }
+
+        #sidebar a {
+            display: block;
+            padding: 18px 25px;
+            font-size: 19px;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            transition: 0.35s;
+        }
+
+        #sidebar a:hover {
+            background: rgba(255, 215, 0, 0.22);
+            padding-left: 40px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        #overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('img/licensed-image.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+        }
+
+        .ana-resim-ortala {
+            padding-top: 80px;
+            text-align: center;
+        }
+
+        .ana-resim-ortala img {
+            display: block;
+            margin: 0 auto;
+            width: 400px;
+        }
+
+        .ana-resim-ortala h1 {
+            color: black;
+            margin-top: 20px;
+        }
+.ana-resim-ortala h1 {
+    color: white;
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+    <div id="overlay" onclick="toggleSidebar()"></div>
+
+    <div id="sidebar">
+        <a href="index.html">Ana Sayfa</a>
+        <a href="6-Kayıt Formu.html">Sipariş</a>
+        <a href="3-Hakkında.html">Hakkımızda</a>
+        <a href="4-Ürünler.html">Ürünlerimiz</a>
+        <a href="5-İletişim.html">İletişim</a>
+        <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
+    </div>
+
+    <div class="ana-resim-ortala">
+        <img src="img/unnamed.jpg" alt="FıratGold Ürünü">
+        <h1>1 Gram ve Çeyrek Örneklerimiz</h1>
+
+        <img src="img/Gemini_Generated_Image_df4206df4206df42.png" alt="Ek Ürün Görseli" style="margin-top: 40px;">
+
+        <h1>Bilezik ve Kolye Örneklerimiz</h1>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FıratGold.com</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background-image: url('desktop-wallpaper-backgrounds-color-4851-light-golden-colour.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .BAŞLIK {
+            display: flex;
+            margin: auto;
+            margin-top: 70px;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            width: 900px;
+            border-radius: 8px;
+            font-size: 100px;
+            font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;  
+            background-image: url(desktop-wallpaper-backgrounds-color-4851-light-golden-colour.jpg);
+            background-size: cover;
+            border-image: url(luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif);
+        }
+
+        form{
+            background-color: white;
+            width: 400px;
+            margin:auto;
+            margin-top: 100px;
+            border-radius: 6px;
+            padding: 20px;
+            border: 2px solid rgb(193, 190, 190);
+            font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;
+            color:black;
+            box-shadow: 0 20px 50px #000000aa;
+            margin-bottom: 50px;
+        }
+
+        input {
+            width: 100%;
+            padding: 2px;
+            border: 1px solid black;
+            background-color: rgb(205, 201, 201);
+        }
+        input[type="radio"]{
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        button:hover{
+            background-color: rgb(165, 164, 164);
+            transform: scale(1.03);
+            opacity: 0.8;
+        }
+
+        /* Onay kutusu */
+        #onayMesaji {
+            width: 450px;
+            margin: 120px auto;
+            padding: 30px;
+            background: rgba(255, 240, 170, 0.95);
+            border: 3px solid #c9a100;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            text-align: center;
+            font-size: 25px;
+            font-family: 'Trebuchet MS', sans-serif;
+            display: none;
+        }
+
+        /* Sidebar */
+        .menu-btn {
+            font-size: 30px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #sidebar {
+            height: 100vh;
+            width: 250px;
+            background: #111;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            padding-top: 60px;
+            transition: left 0.3s;
+            z-index: 1001;
+        }
+
+        #sidebar a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        #sidebar a:hover {
+            background: #333;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        #sidebar.open { left: 0; }
+        #overlay.show { opacity: 1; visibility: visible; }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div id="overlay" onclick="toggleMenu()"></div>
+
+    <div id="sidebar">
+        <a href="2-Ana Sayfa.html">Ana Sayfa</a>
+        <a href="3-Hakkında.html">Hakkımızda</a>
+        <a href="4-Ürünler.html">Ürünlerimiz</a>
+        <a href="5-İletişim.html">İletişim</a>
+    </div>
+
+    <h1 class="BAŞLIK">FıratGold</h1>
+
+    <!-- Form -->
+    <form id="kayitFormu">
+        <label>Adınız</label>
+        <input type="text" name="Müşteri">
+        <br><br><br>
+
+        <label>E-posta</label>
+        <input type="email" name="E-posta">
+        <br><br><br>
+
+        <label>Alım-Satım Yapmak İstediğiniz Miktar</label>
+        <input type="text" name="Mesleğiniz">
+        <br><br><br>
+
+        <label>Kuryeye Ekstra Notunuz</label>
+        <input type="text" name="Not">
+        <br><br><br>
+
+        <h1>Ödeme Yönteminiz</h1>
+
+        <label>Nakit</label>
+        <input type="radio" name="Ödeme" value="Nakit">
+
+        <label>Banka Kartı</label>
+        <input type="radio" name="Ödeme" value="Banka Kartı">
+
+        <label>Kredi Kartı</label>
+        <input type="radio" name="Ödeme" value="Kredi Kartı">
+
+        <br><br><br>
+
+        <label>İkamet Ettiğiniz İlçe</label>
+        <br><br>
+        <select name="Şehir">
+            <option value="Başakşehir">Başakşehir</option>
+            <option value="Üsküdar">Üsküdar</option>
+            <option value="Pendik">Pendik</option>
+            <option value="Beşiktaş">Beşiktaş</option>
+            <option value="Florya">Florya</option>
+            <option value="Bakırköy">Bakırköy</option>
+            <option value="Kadıköy">Kadıköy</option>
+            <option value="Nişantaşı">Nişantaşı</option>
+        </select>
+
+        <br><br><br>
+
+        <button type="submit">Gönder</button>
+    </form>
+
+    <div id="onayMesaji">
+        <b>Bilgileriniz Alınmıştır.</b><br><br>
+        En kısa sürede siparişiniz tarafınıza iletilecektir.
+    </div>
+
+
+<script>
+function toggleMenu() {
+    document.getElementById("sidebar").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+}
+
+document.getElementById("kayitFormu").addEventListener("submit", async function(e){
+    e.preventDefault();
+
+    let form = document.getElementById("kayitFormu");
+    let formData = new FormData(form);
+
+    try {
+        const response = await fetch("backend.php", {
+            method: "POST",
+            body: formData
+        });
+
+        const text = await response.text();
+        console.log("Backend cevabı:", text);
+
+    } catch (err) {
+        console.log("Hata:", err);
+    }
+
+    form.style.display = "none";
+    document.getElementById("onayMesaji").style.display = "block";
+});
+</script>
+
+
+</body>
+</html>
