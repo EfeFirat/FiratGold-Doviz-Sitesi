@@ -3,14 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FıratGold - Ana Sayfa</title>
-<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="shortcut icon" href="favicon.ico">
-<style>
- .menu-btn {
+    <title>FıratGold - Sipariş & Asistan</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        /* --- MEVCUT SİTE STİLLERİ --- */
+        body {
+            background-image: url('img/licensed-image.jpg'); 
+            background-color: #000;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-btn {
             font-size: 30px;
             padding: 12px;
             cursor: pointer;
@@ -35,7 +51,7 @@
             position: fixed;
             top: 0;
             left: -260px;
-            background: rgba(0, 0, 0, 0.78);
+            background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(6px);
             color: white;
             padding-top: 70px;
@@ -43,7 +59,6 @@
             z-index: 1001;
             box-shadow: 5px 0 20px rgba(255, 215, 0, 0.22);
             font-family: 'Trebuchet MS', sans-serif;
-            
         }
 
         #sidebar.open { left: 0; }
@@ -80,257 +95,480 @@
             opacity: 1;
             visibility: visible;
         }
-body {
-    background-image: url('img/licensed-image.jpg'); 
-    background-color: #000;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'Trebuchet MS', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.calc-container {
-    margin-top: 100px;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(12px);
-    padding: 30px;
-    border-radius: 20px;
-    border: 2px solid #e0c068;
-    box-shadow: 0 0 30px rgba(224, 192, 104, 0.4);
-    width: 90%;
-    max-width: 400px;
-    color: white;
-    text-align: center;
-}
+        .calc-container {
+            margin-top: 100px;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid #e0c068;
+            box-shadow: 0 0 30px rgba(224, 192, 104, 0.4);
+            width: 90%;
+            max-width: 400px;
+            color: white;
+            text-align: center;
+        }
 
-.calc-container h2 {
-    color: #e0c068;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
+        .calc-container h2 {
+            color: #e0c068;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-#fiyat-durum {
-    font-size: 15px;
-    margin-bottom: 20px;
-    padding: 12px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-    color: #00ff00;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
-    border: 1px solid rgba(0, 255, 0, 0.2);
-}
+        #fiyat-durum {
+            font-size: 15px;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            color: #00ff00;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+            border: 1px solid rgba(0, 255, 0, 0.2);
+        }
 
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
 
-.input-group label {
-    display: block;
-    font-size: 13px;
-    color: #bbb;
-    margin-bottom: 5px;
-}
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            color: #bbb;
+            margin-bottom: 5px;
+        }
 
-.input-group input, .input-group select {
-    width: 100%;
-    padding: 12px;
-    background: #111;
-    border: 1px solid #444;
-    color: white;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: 0.3s;
-}
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            background: #111;
+            border: 1px solid #444;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
 
-.input-group input:focus {
-    border-color: #e0c068;
-    box-shadow: 0 0 8px rgba(224, 192, 104, 0.4);
-    outline: none;
-}
+        .input-group input:focus {
+            border-color: #e0c068;
+            box-shadow: 0 0 8px rgba(224, 192, 104, 0.4);
+            outline: none;
+        }
 
-.result-box {
-    margin-top: 25px;
-    padding: 20px;
-    background: linear-gradient(145deg, #1a1a1a, #000);
-    border: 1px solid #e0c068;
-    border-radius: 12px;
-}
+        .result-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            border: 1px solid #e0c068;
+            border-radius: 12px;
+        }
 
-.result-box p { margin: 0; font-size: 14px; color: #aaa; }
+        .result-box p { margin: 0; font-size: 14px; color: #aaa; }
 
-#toplam-tutar {
-    display: block;
-    font-size: 32px;
-    font-weight: bold;
-    color: #e0c068;
-    margin-top: 5px;
-}
+        #toplam-tutar {
+            display: block;
+            font-size: 32px;
+            font-weight: bold;
+            color: #e0c068;
+            margin-top: 5px;
+        }
 
-.whatsapp-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #25D366;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.3s;
-}
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
 
-.whatsapp-btn:hover {
-    background-color: #128C7E;
-    transform: scale(1.02);
-}
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.02);
+        }
 
-.home-btn {
-    display: inline-flex; 
-    margin-top: 30px;
-    justify-content: center;
-    align-items: center;
-    padding: 15px 50px;  
-    text-decoration: none; 
-    background-image: url('img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif');
-    background-size: cover;
-    color: black;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 2px solid black;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    transition: 0.3s;
-}
+        .home-btn {
+            display: inline-flex; 
+            margin-top: 30px;
+            justify-content: center;
+            align-items: center;
+            padding: 15px 50px;  
+            text-decoration: none; 
+            background-image: url('img/luxury-gold-effect-design-background-banner-design-template-wallpaper-golden-blur-effect_609989-3393.avif');
+            background-size: cover;
+            color: black;
+            font-weight: bold;
+            border-radius: 8px;
+            border: 2px solid black;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+            margin-bottom: 100px; /* Chatbot için boşluk */
+        }
 
-.menu-btn { font-size: 30px; padding: 12px; cursor: pointer; position: fixed; top: 15px; left: 15px; z-index: 1002; color: white; background: rgba(0, 0, 0, 0.45); border-radius: 10px; }
-#sidebar { height: 100vh; width: 260px; position: fixed; top: 0; left: -260px; background: rgba(0, 0, 0, 0.95); transition: 0.4s; z-index: 1001; padding-top: 70px; box-shadow: 5px 0 20px rgba(224, 192, 104, 0.2); }
-#sidebar.open { left: 0; }
-#sidebar a { display: block; padding: 15px; color: white; text-decoration: none; border-bottom: 1px solid #222; font-size: 18px; }
-#sidebar a:hover { background: rgba(224, 192, 104, 0.1); padding-left: 25px; transition: 0.3s; }
-#overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); opacity: 0; visibility: hidden; transition: 0.3s; z-index: 1000; }
-#overlay.show { opacity: 1; visibility: visible; }
-</style>
+        /* --- CHATBOT STİLLERİ --- */
+        .chat-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4af37, #b48b1d);
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2000;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        .chat-btn svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 2000;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .chat-container.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .chat-header {
+            background: #1a1a1a;
+            color: #d4af37;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: bold;
+            border-bottom: 3px solid #d4af37;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: #d4af37;
+            color: white;
+            border-bottom-right-radius: 2px;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: #e0e0e0;
+            color: #333;
+            border-bottom-left-radius: 2px;
+        }
+
+        .chat-input-area {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input-area input:focus {
+            border-color: #d4af37;
+        }
+
+        .send-btn {
+            background: #1a1a1a;
+            color: #d4af37;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .send-btn:hover { background: #333; }
+
+        .typing {
+            font-size: 0.8rem;
+            color: #888;
+            margin-left: 10px;
+            display: none;
+            padding-bottom: 5px;
+        }
+        
+        @media (max-width: 400px) {
+            .chat-container {
+                width: 90%;
+                right: 5%;
+                bottom: 90px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-<div id="sidebar">
-    <a href="2-Ana Sayfa.html">Ana Sayfa</a>
-    <a href="6-Kayıt Formu.html">Sipariş</a>
-    <a href="3-Hakkında.html">Hakkımızda</a>
-    <a href="4-Ürünler.html">Ürünlerimiz</a>
-    <a href="5-İletişim.html">İletişim</a>
-    <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
-</div>
-<div id="overlay" onclick="toggleMenu()"></div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div id="sidebar">
+        <a href="2-Ana Sayfa.html">Ana Sayfa</a>
+        <a href="6-Kayıt Formu.html">Sipariş</a>
+        <a href="3-Hakkında.html">Hakkımızda</a>
+        <a href="4-Ürünler.html">Ürünlerimiz</a>
+        <a href="5-İletişim.html">İletişim</a>
+        <a href="7-Arkaplan.html">Sipariş Arkaplanımız</a>
+    </div>
+    <div id="overlay" onclick="toggleMenu()"></div>
 
-<div class="calc-container">
-    <h2>FıratGold</h2>
-    <div id="fiyat-durum">● Canlı kurlar yükleniyor...</div>
-    
-    <div class="input-group">
-        <label>Ağırlık (Gram)</label>
-        <input type="number" id="gram" placeholder="Miktarı girin (Örn: 5.25)" step="0.01">
+    <div class="calc-container">
+        <h2>FıratGold</h2>
+        <div id="fiyat-durum">● Canlı kurlar yükleniyor...</div>
+        
+        <div class="input-group">
+            <label>Ağırlık (Gram)</label>
+            <input type="number" id="gram" placeholder="Miktarı girin (Örn: 5.25)" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label>Altın Ayarı</label>
+            <select id="ayar">
+                <option value="24">24 Ayar (Has Altın)</option>
+                <option value="22">22 Ayar</option>
+                <option value="18">18 Ayar</option>
+                <option value="14">14 Ayar</option>
+                <option value="8">8 Ayar</option>
+            </select>
+        </div>
+
+        <div class="result-box">
+            <p>Hesaplanan Toplam Tutar</p>
+            <span id="toplam-tutar">0.00 TL</span>
+        </div>
+
+        <a href="#" id="whatsapp-link" class="whatsapp-btn" target="_blank">
+            WhatsApp ile Sipariş Ver
+        </a>
     </div>
 
-    <div class="input-group">
-        <label>Altın Ayarı</label>
-        <select id="ayar">
-            <option value="24">24 Ayar (Has Altın)</option>
-            <option value="22">22 Ayar</option>
-            <option value="18">18 Ayar</option>
-            <option value="14">14 Ayar</option>
-            <option value="8">8 Ayar</option>
-        </select>
+    <a class="home-btn" href="2-Ana Sayfa.html">Ana Sayfaya Dön</a>
+
+    <button class="chat-btn" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+    </button>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <span>FıratGold Asistan 💎</span>
+            <button class="close-btn" onclick="toggleChat()">×</button>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot-message">
+                Merhaba! Ben FıratGold asistanıyım. Altın fiyatları veya dükkanımız hakkında ne öğrenmek istersiniz?
+            </div>
+        </div>
+        <div class="typing" id="typingIndicator">Yazıyor...</div>
+
+        <div class="chat-input-area">
+            <input type="text" id="userInput" placeholder="Bir soru sorun..." onkeypress="handleEnter(event)">
+            <button class="send-btn" onclick="sendMessage()">➤</button>
+        </div>
     </div>
 
-    <div class="result-box">
-        <p>Hesaplanan Toplam Tutar</p>
-        <span id="toplam-tutar">0.00 TL</span>
-    </div>
+    <script>
+        // --- 1. GLOBAL DEĞİŞKEN (Fiyatı burada tutacağız) ---
+        var globalGramFiyat = "Bilinmiyor";
 
-    <a href="#" id="whatsapp-link" class="whatsapp-btn" target="_blank">
-        WhatsApp ile Sipariş Ver
-    </a>
-</div>
-
-<a class="home-btn" href="2-Ana Sayfa.html">Ana Sayfaya Dön</a>
-
-<script>
-function toggleMenu() {
-    document.getElementById("sidebar").classList.toggle("open");
-    document.getElementById("overlay").classList.toggle("show");
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const gramInput = document.getElementById('gram');
-    const ayarSelect = document.getElementById('ayar');
-    const sonucDisplay = document.getElementById('toplam-tutar');
-    const fiyatDurum = document.getElementById('fiyat-durum');
-    const waLink = document.getElementById('whatsapp-link');
-
-    let gramAltinTL = 6000; 
-
-    async function fiyatCek() {
-        try {
-            const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=PAXGTRY');
-            const data = await response.json();
-            
-            if (data.price) {
-                gramAltinTL = parseFloat(data.price) / 31.1034;
-                
-                fiyatDurum.style.opacity = "0.6";
-                setTimeout(() => {
-                    fiyatDurum.innerText = "● CANLI: " + gramAltinTL.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " TL";
-                    fiyatDurum.style.opacity = "1";
-                }, 200);
-
-                hesapla();
-            }
-        } catch (e) {
-            console.error("Veri hatası:", e);
-            fiyatDurum.innerText = "● Bağlantı Güncelleniyor...";
-            fiyatDurum.style.color = "orange";
+        // --- MENÜ FONKSİYONU ---
+        function toggleMenu() {
+            document.getElementById("sidebar").classList.toggle("open");
+            document.getElementById("overlay").classList.toggle("show");
         }
-    }
 
-    function hesapla() {
-        const gram = parseFloat(gramInput.value) || 0;
-        const ayar = parseInt(ayarSelect.value);
-        
-        const sonuc = (gram * gramAltinTL * (ayar / 24));
-        const formatliSonuc = sonuc.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        
-        sonucDisplay.innerText = formatliSonuc + " TL";
+        // --- HESAPLAMA VE CHAT FONKSİYONLARI ---
+        document.addEventListener('DOMContentLoaded', function() {
+            // HESAPLAMA DEĞİŞKENLERİ
+            const gramInput = document.getElementById('gram');
+            const ayarSelect = document.getElementById('ayar');
+            const sonucDisplay = document.getElementById('toplam-tutar');
+            const fiyatDurum = document.getElementById('fiyat-durum');
+            const waLink = document.getElementById('whatsapp-link');
+            let gramAltinTL = 6000; 
 
-        const numara = "905388863876"; 
-        const mesaj = `Merhaba FıratGold, web sitenizden hesaplama yaptım:\n\n` + 
-                      `Miktar: ${gram} Gram\n` +
-                      `Ayar: ${ayar} Ayar\n` +
-                      `Hesaplanan Fiyat: ${formatliSonuc} TL\n\n` +
-                      `Sipariş vermek/bilgi almak istiyorum.`;
-        
-        waLink.href = `https://wa.me/${numara}?text=${encodeURIComponent(mesaj)}`;
-    }
+            // CANLI FİYAT ÇEKME
+            async function fiyatCek() {
+                try {
+                    const response = await fetch('https://api.binance.com/api/v3/ticker/price?symbol=PAXGTRY');
+                    const data = await response.json();
+                    
+                    if (data.price) {
+                        gramAltinTL = parseFloat(data.price) / 31.1034;
+                        
+                        // --- 2. GLOBAL DEĞİŞKENİ GÜNCELLEME (Yapay Zeka İçin) ---
+                        window.globalGramFiyat = gramAltinTL.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-    gramInput.addEventListener('input', hesapla);
-    ayarSelect.addEventListener('change', hesapla);
+                        fiyatDurum.style.opacity = "0.6";
+                        setTimeout(() => {
+                            fiyatDurum.innerText = "● CANLI: " + window.globalGramFiyat + " TL";
+                            fiyatDurum.style.opacity = "1";
+                        }, 200);
+                        hesapla();
+                    }
+                } catch (e) {
+                    console.error("Veri hatası:", e);
+                    fiyatDurum.innerText = "● Bağlantı Güncelleniyor...";
+                    fiyatDurum.style.color = "orange";
+                }
+            }
 
-    fiyatCek();
-    setInterval(fiyatCek, 5000); 
-});
-</script>
+            // HESAPLAMA
+            function hesapla() {
+                const gram = parseFloat(gramInput.value) || 0;
+                const ayar = parseInt(ayarSelect.value);
+                const sonuc = (gram * gramAltinTL * (ayar / 24));
+                const formatliSonuc = sonuc.toLocaleString('tr-TR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                sonucDisplay.innerText = formatliSonuc + " TL";
 
+                const numara = "905388863876"; 
+                const mesaj = `Merhaba FıratGold, web sitenizden hesaplama yaptım:\n\n` + 
+                              `Miktar: ${gram} Gram\n` +
+                              `Ayar: ${ayar} Ayar\n` +
+                              `Hesaplanan Fiyat: ${formatliSonuc} TL\n\n` +
+                              `Sipariş vermek/bilgi almak istiyorum.`;
+                waLink.href = `https://wa.me/${numara}?text=${encodeURIComponent(mesaj)}`;
+            }
+
+            // Listenerlar
+            gramInput.addEventListener('input', hesapla);
+            ayarSelect.addEventListener('change', hesapla);
+            fiyatCek();
+            setInterval(fiyatCek, 5000); 
+        });
+
+        // --- CHATBOT FONKSİYONLARI (GLOBAL) ---
+        function toggleChat() {
+            const container = document.getElementById('chatContainer');
+            container.classList.toggle('active');
+            if (container.classList.contains('active')) {
+                document.getElementById('userInput').focus();
+            }
+        }
+
+        function handleEnter(e) {
+            if (e.key === 'Enter') sendMessage();
+        }
+
+        async function sendMessage() {
+            const inputField = document.getElementById('userInput');
+            const messageText = inputField.value.trim();
+            const messagesDiv = document.getElementById('chatMessages');
+            const typingIndicator = document.getElementById('typingIndicator');
+
+            if (messageText === "") return;
+
+            // Kullanıcı mesajı
+            addMessage(messageText, 'user-message');
+            inputField.value = "";
+            
+            // Yükleniyor...
+            typingIndicator.style.display = 'block';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            try {
+                // --- 3. SUNUCUYA SORUYU + FİYATI GÖNDERME ---
+                const response = await fetch('http://localhost:3000/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // Burası değişti: Fiyatı da gönderiyoruz
+                    body: JSON.stringify({ 
+                        soru: messageText,
+                        fiyat: window.globalGramFiyat || "Henüz yüklenmedi"
+                    })
+                });
+
+                const data = await response.json();
+                typingIndicator.style.display = 'none';
+                addMessage(data.cevap, 'bot-message');
+
+            } catch (error) {
+                console.error("Hata:", error);
+                typingIndicator.style.display = 'none';
+                addMessage("Şu an sunucuyla iletişim kuramıyorum. Lütfen terminalden 'node server.js' komutunun çalıştığından emin olun.", 'bot-message');
+            }
+        }
+
+        function addMessage(text, className) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', className);
+            msgDiv.innerText = text;
+            messagesDiv.appendChild(msgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
 </body>
 </html>
